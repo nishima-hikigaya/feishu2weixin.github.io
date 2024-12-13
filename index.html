@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="icon" href="image/icon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <meta property="og:title" content="飞书转换大师">
+    <meta property="og:description" content="一键将飞书文档转换为微信公众号排版格式">
+    <meta property="og:image" content="image/icon.png">
+    <meta property="og:url" content="feishu2weixin.funwithbuild.com">
+    
+<meta name="description" content="飞书转换大师能将飞书文档完美转换为微信公众号格式。它能智能识别飞书文档的样式，自动适配微信公众号的编辑器要求，完美保留原文档的格式和样式。">
+<meta name="keywords" content="飞书转换大师,Chrome插件,微信公众号，微信公众号编辑器,文档转换,飞书工具">
+<meta name="robots" content="index, follow">
+<meta name="author" content="汐笺">
+
+
+
+    <title>飞书转换大师，一键将飞书文档转换为微信公众号排版格式</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
+            gap: 8px;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .try-now {
+            background: #7B66FF;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+.hero-wrapper {
+  padding: 80px 0;
+  position: relative; /* 添加这一行 */
+      background: linear-gradient(to bottom, rgba(240, 248, 255, 1), rgba(255, 255, 255, 1));
+
+}
+
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 64px;
+
+}
+
+
+
+.hero-content {
+  flex: 1;
+}
+  .hero-content h1 {
+      line-height: 1.4;
+      margin-bottom: 24px;
+  }
+
+  .title-line {
+      display: block;
+      margin-bottom: 8px;
+  }
+
+  .first-line {
+      font-size: 2.5rem;
+  }
+
+  .second-line {
+      font-size: 3rem;
+      color: #333;
+  }
+
+  .third-line {
+      font-size: 3.5rem;
+      color: #333;
+  }
+
+  .brand-feishu {
+      color: #4C6FFB;  /* 飞书使用绿色 */
+      font-weight: bold;
+  }
+
+  .brand-master {
+      color: #333333;  /* 转换大师使用紫色 */
+      font-weight: bold;
+  }
+
+  .highlight {
+      color: #00C853;
+      font-weight: bold;
+  }
+
+  .accent {
+      color: #7B66FF;
+      font-weight: bold;
+  }
+
+.hero-content p {
+  color: #666;
+  margin-bottom: 16px;
+  max-width: 600px;
+}
+
+.hero-image {
+  max-width: 50%;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 0.5px solid #e0e0e0; /* 添加灰色边框 */
+}
+
+
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+    flex-wrap: wrap; /* 添加这行，允许按钮换行 */
+
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    min-width: 200px; /* 添加最小宽度，确保按钮有合适的大小 */
+  flex: 1; /* 允许按钮组伸缩 */
+}
+
+
+.hero-button {
+    width: 100%; /* 让按钮填满 button-group 的宽度 */
+  text-align: center; /* 确保按钮文字居中 */
+  background: #7B66FF;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background: #6952E9;
+}
+
+    
+.install-guide-link {
+  display: block;
+  margin-top: 12px;
+  color: #666;
+  text-decoration: underline;
+  font-size: 14px;
+  text-align: center;
+}
+
+.install-guide-link:hover {
+  color: #7B66FF;
+}
+
+.install-hint-text {
+  display: block;
+  margin-top: 12px;
+  color: #666;
+  text-decoration: none; /* 移除下划线 */
+  font-size: 14px;
+  text-align: center;
+}
+
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            text-align: center;
+            background: #fff;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 48px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            text-align: left;
+        }
+
+.feature-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: #E0E0E0;
+     border: none; /* 移除边框 */
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08); /* 使用阴影模拟边框 */
+}
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* How to Use Section */
+ .how-to-use {
+    position: relative;
+    padding: 80px 0;
+    background: linear-gradient(180deg, 
+        #FFFFFF 0%,
+        #EFF0F9 30%,
+        #EFF0F9 70%,
+        #FFFFFF 100%
+    );
+}
+
+        .how-to-use h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 48px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+            align-items: center;
+        }
+
+        .step:nth-child(even) {
+            direction: rtl;
+        }
+
+        .step:nth-child(even) .step-content {
+            direction: ltr;
+        }
+
+        .step-number {
+            color: #7B66FF;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .step-content p {
+            color: #666;
+        }
+
+        .step img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            background: #E0E0E0;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 48px;
+        }
+
+        .faq-item {
+            background: #F5F7FF;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .faq-item h3 {
+            color: #7B66FF;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: #666;
+        }
+
+        /* Contact Section */
+    .contact {
+    position: relative;
+        text-align: center;
+
+    padding: 80px 0;
+    background: linear-gradient(180deg, 
+        #FFFFFF 0%,
+        #F4FFF3 40%,
+        #F4FFF3 100%
+    );
+}
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .contact p {
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .contact a {
+            color: #7B66FF;
+            text-decoration: none;
+        }
+
+        .contact-image {
+            width: 200px;
+            height: 200px;
+            margin: 32px auto;
+            background: #E0E0E0;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 32px 0;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .footer img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+
+      .first-line {
+          font-size: 2rem;
+      }
+
+      .second-line {
+          font-size: 2.5rem;
+      }
+
+      .third-line {
+          font-size: 3rem;
+      }
+
+    .hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+     }
+
+  .hero-image {
+    max-width: 100%;
+  }
+
+
+            .hero-content p {
+                margin: 0 auto 16px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .step:nth-child(even) {
+                direction: ltr;
+            }
+             .hero-buttons {
+                 flex-direction: column; /* 在窄屏上改为垂直排列 */
+    align-items: stretch; /* 让按钮组填满容器宽度 */
+    gap: 24px; /* 增加按钮组之间的间距 */
+            }
+              .button-group {
+    width: 100%; /* 让按钮组占满宽度 */
+  }
+
+
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="/" class="logo">
+                <img src="image/icon.png" alt="飞书转换大师">
+                飞书转换大师
+            </a>
+            <nav class="nav">
+                <a href="#features">特色功能</a>
+                <a href="#usage">使用指南</a>
+                <a href="#faq-id">常见问题</a>
+                <a href="#contact_us">联系我们</a>
+            </nav>
+            <a href="#usage" class="try-now">立即使用</a>
+        </div>
+    </header>
+
+    <main>
+
+<div class="hero-wrapper">
+  <section class="hero container">
+    <div class="hero-content">
+      <h1>
+        <div class="title-line first-line">
+          <span class="brand-feishu">飞书</span><span class="brand-master">转换大师</span>
+        </div>
+        <div class="title-line second-line">给<span class="highlight">枯燥</span>的排版工作</div>
+        <div class="title-line third-line">带来一点<span class="accent">变化</span></div>
+      </h1>
+      <p>飞书转换大师能将飞书文档完美转换为微信公众号格式。它能智能识别飞书文档的样式，自动适配微信公众号的编辑器要求，完美保留原文档的格式和样式。</p>
+      <p>无论是图文混排、分栏样式、多级标题，还是表格与列表，都能完美转换。让创作者将更多精力投入到内容创作中，而不是浪费在反复调调整排版上。</p>
+  <div class="hero-buttons">
+  <div class="button-group">
+    <a href="install.html" class="hero-button" target="_blank" rel="noopener noreferrer">下载本地安装包</a>
+    <a href="install.html" class="install-guide-link" target="_blank" rel="noopener noreferrer">本地安装教程</a>
+  </div>
+  <div class="button-group">
+    <a href="#" class="hero-button" target="_blank" rel="noopener noreferrer">从 Chrome 应用商店安装</a>
+     <span class="install-hint-text">如无法打开，请下载本地安装包 </span>
+  </div>
+</div>
+
+    </div>
+    <img src="image/hero.png" class="hero-image">
+  </section>
+</div>
+
+
+
+</div>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2>面向飞书文档和微信公号，极致优化</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="image/feature/easy_to_use.png" alt="简单易用">
+                        <h3>简单易用</h3>
+                        <p>只需要简单几步，一键转换，就可以轻松完成排版！</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="image/feature/strong.png" alt="稳定可依赖">
+                        <h3>稳定可依赖</h3>
+                        <p>性能强悍，测试基准为一篇 2 万字 & 15 张插图的稿件，可以应对大部分场景。</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIyNSIgdmlld0JveG0iMCAwIDQwMCAyMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjUiIGZpbGw9IiNFMEUwRTAiLz48L3N2Zz4=" alt="图片复制">
+                        <h3>图片复制</h3>
+                        <p>完美一键复制图片至微信公众号编辑器，无需手动插图。</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIyNSIgdmlld0JveG0iMCAwIDQwMCAyMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjUiIGZpbGw9IiNFMEUwRTAiLz48L3N2Zz4=" alt="支持众多组件">
+                        <h3>支持众多组件</h3>
+                        <p>支持飞书所有常用组件样式，甚至支持将飞书的白板组件复制成图片！</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="image/step4.png" alt="支持复杂格式">
+                        <h3>支持复杂格式</h3>
+                        <p>支持将复杂的飞书文档样式复制至公众号编辑器，比如分栏！</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="" alt="支持格式嵌套">
+                        <h3>支持格式嵌套</h3>
+                        <p>将飞书文档复杂的样式嵌套在微信公众号编辑器完美复刻，在高亮块、引用和表格内也可以使用加粗加斜等样式</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-to-use" id="usage">
+            <div class="container">
+                <h2>如何使用飞书转换大师</h2>
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-number">Step 1</div>
+                        <h3>安装飞书使用大师</h3>
+                        <p>你可以通过 Chrome 商店直接下载飞书转换大师，如果你所在的内网环境无法正常访问 Chrome 商店，也可以通过本地安装包的方式使用飞书转换大师。<a href="install.html" target="_blank" rel="noopener noreferrer">点击查看本地安装方法。</a></p>
+                        <p>安装飞书转换大师后，为了方便使用，请把它固定在浏览器导航栏上。</p>
+
+                    </div>
+                    <img src="image/step1.png" alt="安装步骤">
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-number">Step 2</div>
+                        <h3>打开并且复制一个飞书文档</h3>
+                        <p>打开你需要复制的文档，点击浏览器导航栏身上的飞书转换大师的 icon，根据界面提示利用快捷键复制全文。</p>
+                    </div>
+                    <img src="image/step2.png" alt="复制步骤">
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-number">Step 3</div>
+                        <h3>点击一键转换格式</h3>
+                        <p>当你复制全文之后，点击一键转换格式，页面会开始滚动，当页面滚动到底部之后，飞书文档就会被转换成微信公众好编辑器所需要的格式，并且在插件的侧边栏界面上提供转换后的文档预览。</p>
+                    </div>
+                    <img src="image/step3.png" alt="转换步骤">
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-number">Step 4</div>
+                        <h3>一键复制，并且粘贴至微信公众号编辑器</h3>
+                        <p>点击界面上的一键复制按钮，文章内容就会进入你的剪贴板，然后只需要打开微信公众号后台，将文档复制微信公众号编辑器界面即可，如果文章的插图比较多，微信公众号编辑器可能会发生暂时性的卡顿，只需要稍加等待即可。</p>
+                        <p>如果你需要修改内容，你可以选择黏贴至微信公众号后修改，也可以选择在飞书文档修改内容后，重复第二步到第四步的步骤。 </p>
+                    </div>
+                    <img src="image/step4.png" alt="粘贴步骤">
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" id="faq-id">
+            <div class="container">
+                <h2>常见问题</h2>
+                <div class="faq-item">
+                    <h3>Question：为什么点击一键转换格式，页面会进行滚动？</h3>
+                    <p>因为需要将文档内的所有图片都转化为 Base64 格式，所以需要先把整个文档都做一遍加载。</p>
+                    <p>这是有飞书转换大师的实现架构决定的，因为我们是一个没有服务端的架构，充分保护用户隐私，这个不会影响你的正常使用。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Question：为什么复制到微信公众号的编辑器里面，微信公众号编辑器会卡？</h3>
+                    <p>因为飞书转换大师的图片都用了 Base 64 的格式，这样可以保证图片复制的准确性，确保复制过的图片都会走微信公众号的本地上传，但是也会导致一些性能问题。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Question：飞书转化大师支持的飞书文档格式都有哪些？</h3>
+                    <p>飞书转换大师支持飞书文档的绝大部分格式，包括标题、列表、正文、代码、引用、高亮块、加粗、加斜、下划线、背景色、删除线、文字内代码、分割线、分栏样式、画板。</p>
+                </div>
+               <div class="faq-item">
+                    <h3>Question：如果不能访问 Chrome 应用商店，应该怎么办？</h3>
+                    <p>你可以通过 Chrome 商店直接下载飞书转换大师，如果你所在的地区网络无法访问 Chrome 商店，也可以通过本地下载的方式来使用飞书转换大师。<a href="install.html" target="_blank" rel="noopener noreferrer">点击查看本地安装方法。</a></p>
+                    <p>安装飞书转换大师后，为了方便使用，请把它固定在浏览器导航栏上。</p>
+                </div>
+                               <div class="faq-item">
+                    <h3>Question：如果我发现飞书转化大师有 Bug，我应该找谁来提？</h3>
+                <p>可以通过下方的作者联系方式来提 Bug，我们会第一时间修复。</p>
+                </div>
+            </div>
+        </section>
+
+   <section class="contact" id="contact_us">
+    <div class="container">
+        <h2>联系我们</h2>
+        <p>如果你对本软件的使用有任何疑问，欢迎阅读<a href="privacy.html" target="_blank" rel="noopener noreferrer">隐私协议</a>和<a href="TermsServices.html" target="_blank" rel="noopener noreferrer">使用条款</a>。</p>
+        <p>如果还有其他的疑问或者诉求，你可以通过下方的微信二维码联系到作者，添加微信好友，请备注“飞书转换大师”</p>
+        <img src="image/qr_code.jpg" alt="微信二维码" class="contact-image">
+    </div>
+</section>
+
+        <footer class="footer">
+            <div class="container">
+                <img src="image/icon.png" alt="Logo">
+                <p>飞书转换大师</p>
+                <p>© 2024 飞书转换大师 保留所有权利</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
