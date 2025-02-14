@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞书转换大师 - 简单易用的微信公众号排版工具</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-button {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            color: #7B66FF;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(to bottom, rgba(240, 248, 255, 1), rgba(255, 255, 255, 1));
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            color: #333;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .feature-block {
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .feature-block:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-block:nth-child(even) .feature-text {
+            direction: ltr;
+        }
+
+        .feature-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #E0E0E0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #7B66FF;
+        }
+
+        .feature-text p {
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: #F5F7FF;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 40px 0;
+        }
+
+        .highlight-box h3 {
+            color: #7B66FF;
+            margin-bottom: 16px;
+        }
+
+        .highlight-list {
+            list-style: none;
+        }
+
+        .highlight-list li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .highlight-list li::before {
+            content: "✓";
+            color: #7B66FF;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #fff, #F4FFF3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #7B66FF;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #6952E9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feature-block {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .feature-block:nth-child(even) {
+                direction: ltr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .feature-text h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="https://feishu2weixin.funwithbuild.com/" class="back-button">← 返回飞书转换大师首页</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>飞书转换大师，简单易用，智能便捷</h1>
+            <p>飞书转换大师让文档转换变得简单自然，就像呼吸一样轻松。告别繁琐的手动排版，让智能化工具为您处理所有细节。</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-block">
+<img 
+    class="feature-image" 
+
+    src="images/easy_to_use.webp"
+    style="
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    "
+/>
+
+
+                <div class="feature-text">
+                    <h2>一键式转换体验</h2>
+                    <p>通过简单的复制和快捷键操作，即可启动智能转换流程。无需复杂的参数设置，系统会自动识别文档结构和样式特征，确保最佳转换效果。</p>
+                </div>
+            </div>
+
+            <div class="feature-block">
+<img 
+    class="feature-image" 
+
+    src="images/step4.webp"
+    style="
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    "
+/>
+
+                <div class="feature-text">
+                    <h2>智能样式匹配</h2>
+                    <p>创新的样式匹配引擎能够智能分析原文档的样式特征，自动匹配最接近的微信公众号样式。无需手动调整，即可获得专业的排版效果。</p>
+                    <p>系统会自动处理字体、颜色、间距等细节问题，确保转换后的文档在视觉上保持一致性和专业性。</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>核心优势</h3>
+                <ul class="highlight-list">
+                    <li>智能化一键转换，无需复杂操作</li>
+                    <li>自动识别文档结构和样式</li>
+                    <li>快速处理大型文档</li>
+                    <li>转换过程全程可视化</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>开始体验智能转换</h2>
+            <p style="margin: 20px 0;">立即安装飞书转换大师，体验前所未有的便捷转换体验</p>
+            <a href="https://feishu2weixin.funwithbuild.com/#usage" class="cta-button">立即安装</a>
+        </div>
+    </section>
+</body>
+</html>

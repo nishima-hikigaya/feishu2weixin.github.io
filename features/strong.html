@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞书转换大师 - 稳定高效的微信公众号排版工具</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-button {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            color: #7B66FF;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #F0F7FF 0%, #FFFFFF 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            color: #333;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 40px 0;
+            background: #fff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: #F8F9FF;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #7B66FF;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #666;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .feature-block {
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .feature-block:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-block:nth-child(even) .feature-text {
+            direction: ltr;
+        }
+
+        .feature-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #E0E0E0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #7B66FF;
+        }
+
+        .feature-text p {
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        /* Performance Chart */
+        .performance-chart {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            margin: 40px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-bars {
+            display: grid;
+            gap: 16px;
+        }
+
+        .chart-bar {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .bar-label {
+            text-align: right;
+            color: #666;
+        }
+
+        .bar-track {
+            height: 24px;
+            background: #F0F0F0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #7B66FF 0%, #4C6FFB 100%);
+            border-radius: 12px;
+            transition: width 1s ease;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #fff, #F4F6FF);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #7B66FF;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #6952E9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feature-block {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .feature-block:nth-child(even) {
+                direction: ltr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .feature-text h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="https://feishu2weixin.funwithbuild.com/" class="back-button">← 返回飞书转换大师首页</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>飞书文档转微信公众号的终极解决方案</h1>
+            <p>专业的微信公众号排版工具，完美支持从飞书文档到微信订阅号的内容转换。告别繁琐的手动排版，一键即可完成专业级的微信公众号编辑器排版效果。</p>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">30,000+</div>
+                    <div class="stat-label">飞书文档字数支持</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">图文混排能力</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">排版成功率</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-block">
+
+<img 
+    class="feature-image" 
+
+    src="images/strong.webp"
+    style="
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    "
+/>
+
+                <div class="feature-text">
+                    <h2>强大的飞书文档转换能力</h2>
+                    <p>无论是普通的飞书文档，还是包含复杂表格和图片的内容，都能完美转换为微信公众号格式。一键排版功能让您瞬间获得专业的微信订阅号排版效果。</p>
+                    <p>通过全面的性能测试，系统展现出卓越的长文档处理能力。实际应用中，能够轻松处理超过 3 万字的文稿内容，并完美支持 30 张以上高清图片的混合排版需求。整个转换过程稳定可靠，运行流畅。</p>
+                    <p>飞书转换大师在 Mac，Windows 平台经进过了充分测试，端到端测试从飞书文档到公众号编辑器，并且对不同的 Chrome 插件做了兼容性处理。</p>
+
+                </div>
+            </div>
+
+            <div class="performance-chart">
+                <h3 style="margin-bottom: 24px;">微信公众号排版性能测试</h3>
+                <div class="chart-bars">
+                    <div class="chart-bar">
+                        <div class="bar-label">飞书长文档</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-label">图文混排</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-label">排版精确度</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+
+      
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>开始使用飞书文档转微信公众号工具</h2>
+            <p style="margin: 20px 0;">让微信订阅号排版变得简单，一键完成专业级排版效果</p>
+            <a href="https://feishu2weixin.funwithbuild.com/#usage" class="cta-button">立即体验一键排版</a>
+        </div>
+    </section>
+
+    <footer style="background: #f5f5f5; padding: 40px 0; margin-top: 60px;">
+        <div class="container">
+            <div style="text-align: center; color: #666;">
+                <p>专业的飞书文档转微信公众号排版工具 | 支持一键排版 | 微信订阅号排版专家</p>
+                <p style="margin-top: 10px;">让微信公众号编辑器排版更简单</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
